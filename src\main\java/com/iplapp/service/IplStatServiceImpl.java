@@ -1,11 +1,14 @@
 package com.iplapp.service;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.iplapp.dao.GetIplData;
-import com.iplapp.domain.Player;
 import com.iplapp.domain.Team;
 
 public class IplStatServiceImpl implements IplStatService {
@@ -39,8 +42,54 @@ public class IplStatServiceImpl implements IplStatService {
 
     @Override
     public List<String> teamInfoByLabel() {
-        // TODO Auto-generated method stub
+        Map<String, List<String>> map = new HashMap<>();
+        
+        Predicate<Team> p = new Predicate<Team>() {
+            @Override
+            public boolean test(Team t) {
+                for(Team team : teamList) {
+                    if(team.label.equals("MI")) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        };
+        
+        Stream<Team> t = teamList.stream().filter(p);
+        System.out.println("->");
+        t.forEach(System.out::println);
+        
         return null;
     }
+    
+    
+    @Override
+    public boolean searchTeam() {
+        boolean result = GetIplData.srchTeamInDb();
+        return result;
+    }
+    
+    
+    @Override
+    public void testLabel() {
+     GetIplData.testLabel();
+        
+    }
+    
+    @Override
+    public void getPlayers() {
+        GetIplData.getPlayersBasedOnLabel();
+    }
+    
+    @Override
+    public List<String> getPlayersBasedOnCity(){
+        return GetIplData.getPlayersBasedOnCity();
+    }
+    
+    
+    
+    
+    
 
 }
