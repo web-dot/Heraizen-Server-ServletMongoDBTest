@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+import org.bson.Document;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.iplapp.dao.GetIplData;
 import com.iplapp.domain.Team;
@@ -83,8 +85,8 @@ public class IplStatServiceImpl implements IplStatService {
     }
     
     @Override
-    public List<String> getPlayersBasedOnCity(){
-        return GetIplData.getPlayersBasedOnCity();
+    public List<String> getPlayersBasedOnCity(String city){
+        return GetIplData.getPlayersBasedOnCity(city);
     }
     
     

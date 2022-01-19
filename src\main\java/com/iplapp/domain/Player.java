@@ -2,9 +2,11 @@ package com.iplapp.domain;
 
 public class Player {
     
-    private String name;
-    private String price;
-    private String role;
+    public String _id;
+    public String name;
+    public String price;
+    public String role;
+    
     public String getName() {
         return name;
     }

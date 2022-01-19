@@ -2,6 +2,8 @@ package com.iplapp.service;
 
 import java.util.List;
 
+import org.bson.Document;
+
 import com.iplapp.domain.Team;
 
 public interface IplStatService {
@@ -12,5 +14,5 @@ public interface IplStatService {
     boolean searchTeam();
     void testLabel();
     void getPlayers();
-    List<String> getPlayersBasedOnCity();
+    List<String> getPlayersBasedOnCity(String city);
 }

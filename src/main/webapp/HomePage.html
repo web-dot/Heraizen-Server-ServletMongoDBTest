@@ -6,13 +6,39 @@
 </head>
 <body>
 	<h1>Query IplData</h1>
+	<!--  
 	<a href="getPlayersByTeam.do">Get Players By Team</a><br>
 	<a href="getTeamInfoByLabel.do">Get Team By Label</a><br>
 	<a href="searchTeamInDB.do">Get Team</a><br>
 	<a href="testLabel.do">Test Label</a><br><br>
 	<br>
 	<a href="getPlayersOnLabel.do">Get Players On Label</a><br>
-	<a href="getPlayersBasedOnCity.do">Get Players On City</a>	
+	-->
+	
+	<form action="getPlayersBasedOnCity.do" method="get">
+	<label>Select a City to view the Players</label>
+		<select name="city">
+  			<option>Mumbai, Maharashtra</option>
+  			<option>Delhi, NCR</option>
+  			<option>Mohali, Punjab</option>
+  			<option>Kolkata, West Bengal</option>
+  			<option>Jaipur, Rajasthan</option>
+  			<option>Chennai, Tamil Nadu</option>
+		</select>
+		<input type="submit">
+	</form>
+	
+		<form action="getTeamInfoByLabel.do" method="get">
+	<label>Select a Label to view team info</label>
+		<select name="label">
+  			<option>MI</option>
+  			<option>DC</option>
+  			<option>CSK</option>
+  			<option>SRH</option>
+  			<option>RCB</option>
+		</select>
+		<input type="submit">
+	</form>		
 	
 	
 	

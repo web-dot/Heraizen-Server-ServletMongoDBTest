@@ -1,6 +1,7 @@
 package com.iplapp.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.bson.Document;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.iplapp.domain.Player;
 import com.iplapp.domain.Team;
 import com.iplapp.service.IplStatService;
 import com.iplapp.service.IplStatServiceImpl;
@@ -70,8 +76,17 @@ public class ControllerServlet extends HttpServlet {
         if(uri.contains("/getPlayersBasedOnCity.do")) {
             System.out.println("getPlayersBasedOnCity");
             IplStatService statService = IplStatServiceImpl.getInstance();
-            List<String> players = statService.getPlayersBasedOnCity();
             
+            String city = request.getParameter("city");
+            System.out.println("--->" + city);
+            
+            List<String> playerNames = statService.getPlayersBasedOnCity(city);
+            System.out.println(playerNames);
+            
+            request.setAttribute("playerList", playerNames);
+            request.setAttribute("city", city);
+            rd = request.getRequestDispatcher("PlayersByCity.jsp");
+            rd.forward(request, response);
         }
     }
 	
@@ -85,3 +100,6 @@ public class ControllerServlet extends HttpServlet {
 	}
 
 }
+
+
+
